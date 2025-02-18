@@ -1,0 +1,115 @@
+/* login.component.scss */
+
+/* Styles de la page de connexion */
+.page-connexion {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--couleur-primaire) 0%, var(--couleur-secondaire) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.conteneur-connexion {
+  width: 100%;
+  max-width: 450px;
+}
+
+.carte-connexion {
+  background: white;
+  border-radius: var(--rayon-bordure);
+  box-shadow: var(--ombre-moyenne);
+  padding: 2.5rem;
+}
+
+.en-tete {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    color: var(--couleur-texte);
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .sous-titre {
+    color: #64748b;
+    font-size: 1rem;
+  }
+}
+
+.formulaire-connexion {
+  .groupe-formulaire {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      color: var(--couleur-texte);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .champ-input {
+      position: relative;
+
+      i {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+      }
+
+      input {
+        padding-left: 2.75rem;
+        width: 100%;
+        
+        &::placeholder {
+          color: #94a3b8;
+        }
+      }
+    }
+  }
+}
+
+.btn-connexion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  
+  i {
+    transition: transform 0.2s ease;
+  }
+  
+  &:hover:not(:disabled) {
+    i {
+      transform: translateX(4px);
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.lien-inscription {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #64748b;
+  
+  a {
+    color: var(--couleur-primaire);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 0.25rem;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

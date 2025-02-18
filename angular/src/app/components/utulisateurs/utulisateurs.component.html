@@ -1,0 +1,121 @@
+<div class="users-container" *ngIf="isAdmin">
+  <h2>User Management</h2>
+  
+  <!-- <div class="geolocation-error" *ngIf="geolocationError">
+    <p>{{ geolocationError }}</p>
+  </div> -->
+
+  <div class="users-grid">
+    <div class="user-card" *ngFor="let user of connectedUsers">
+      <div class="user-header">
+        <div class="user-status" [ngClass]="getUserStatusClass(user)"></div>
+        <h3>{{ user.username }}</h3>
+      </div>
+      
+      <div class="user-info">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <!-- <p><strong>Location:</strong> 
+          <a [href]="getMapLink(user.location.latitude, user.location.longitude)" 
+             target="_blank" 
+             title="View on Google Maps">
+            {{ user.location.latitude | number:'1.6-6' }}, {{ user.location.longitude | number:'1.6-6' }}
+          </a>
+        </p> -->
+        <p><strong>Last Active:</strong> {{ user.lastActive | date:'medium' }}</p>
+        <p *ngIf="user.blockStatus?.isBlocked" class="block-status">
+          {{ getBlockStatusText(user) }}
+        </p>
+      </div>
+
+      <div class="user-actions">
+        <button class="view-logs-btn" (click)="viewUserLogs(user)">
+          View Activity Logs
+        </button>
+        <button 
+          *ngIf="!user.blockStatus?.isBlocked" 
+          class="block-btn" 
+          (click)="openBlockModal(user)">
+          Block User
+        </button>
+        <button 
+          *ngIf="user.blockStatus?.isBlocked" 
+          class="unblock-btn" 
+          (click)="unblockUser(user)">
+          Unblock User
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- User Activity Logs Modal -->
+<div class="modal" *ngIf="selectedUser">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Activity Logs - {{ selectedUser.username }}</h3>
+      <button class="close-btn" (click)="closeUserLogs()">×</button>
+    </div>
+
+    <div class="activity-logs">
+      <div class="log-actions">
+        <button class="clear-logs-btn" (click)="clearUserLogs(selectedUser.id)">
+          Clear Logs
+        </button>
+      </div>
+
+      <div class="log-list" *ngIf="getUserLogs(selectedUser.id).length > 0">
+        <div class="log-item" *ngFor="let activity of getUserLogs(selectedUser.id)">
+          <span class="activity-icon">{{ getActivityIcon(activity.action) }}</span>
+          <div class="activity-content">
+            <p class="activity-action">{{ activity.action }}</p>
+            <p class="activity-details">{{ activity.details }}</p>
+            <p class="activity-timestamp">{{ formatTimestamp(activity.timestamp) }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-logs" *ngIf="getUserLogs(selectedUser.id).length === 0">
+        <p>No activity logs found for this user.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block User Modal -->
+<div class="modal" *ngIf="userToBlock">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Block User - {{ userToBlock.username }}</h3>
+      <button class="close-btn" (click)="closeBlockModal()">×</button>
+    </div>
+
+    <div class="block-form">
+      <h4>Select Block Duration:</h4>
+      <div class="duration-options">
+        <label>
+          <input type="radio" name="blockDuration" [(ngModel)]="blockDuration" value="week">
+          1 Week
+        </label>
+        <label>
+          <input type="radio" name="blockDuration" [(ngModel)]="blockDuration" value="month">
+          1 Month
+        </label>
+        <label>
+          <input type="radio" name="blockDuration" [(ngModel)]="blockDuration" value="indefinite">
+          Indefinitely
+        </label>
+      </div>
+
+      <div class="block-actions">
+        <button class="cancel-btn" (click)="closeBlockModal()">Cancel</button>
+        <button class="confirm-block-btn" (click)="blockUser(userToBlock)">
+          Confirm Block
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="unauthorized" *ngIf="!isAdmin">
+  <p>You are not authorized to view this page.</p>
+</div>

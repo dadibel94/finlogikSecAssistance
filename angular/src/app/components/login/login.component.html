@@ -1,0 +1,55 @@
+<div class="page-connexion fade-in">
+  <div class="conteneur-connexion">
+    <div class="carte-connexion">
+      <div class="en-tete">
+        <h2>Connexion</h2>
+        <p class="sous-titre">Bienvenue sur notre plateforme</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="formulaire-connexion">
+        <div class="groupe-formulaire">
+          <label for="email">Adresse e-mail</label>
+          <div class="champ-input">
+            <i class="fas fa-envelope"></i>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email" 
+              placeholder="Entrez votre adresse e-mail"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="groupe-formulaire">
+          <label for="password">Mot de passe</label>
+          <div class="champ-input">
+            <i class="fas fa-lock"></i>
+            <input 
+              type="password" 
+              id="password" 
+              formControlName="password" 
+              placeholder="Entrez votre mot de passe"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-connexion" 
+          [disabled]="loginForm.invalid">
+          <span>Se connecter</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="lien-inscription">
+        <p>
+          Vous n'avez pas de compte ?
+          <a routerLink="/register">Inscrivez-vous ici</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

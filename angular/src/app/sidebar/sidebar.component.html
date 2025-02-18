@@ -1,0 +1,87 @@
+<nav class="barre-laterale">
+  <div class="contenu-barre-laterale">
+    <div class="en-tete-barre-laterale">
+      <div class="logo">
+        <i class="fas fa-code"></i>
+        <span>Fin-Code</span>
+      </div>
+    </div>
+
+    <div class="menu-barre-laterale">
+      <!-- Menu Utilisateur -->
+      <ng-container *ngIf="userRole === 'user'">
+        <div class="groupe-menu">
+          <span class="titre-groupe">Navigation</span>
+          <ul class="liste-menu">
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/dashboard" routerLinkActive="actif">
+                <i class="fas fa-chart-line"></i>
+                <span>Tableau de bord</span>
+              </a>
+            </li>
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/editor" routerLinkActive="actif">
+                <i class="fas fa-code"></i>
+                <span>Éditeur de code</span>
+              </a>
+            </li>
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/questions" routerLinkActive="actif">
+                <i class="fas fa-question-circle"></i>
+                <span>Questions</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+
+      <!-- Menu Administrateur -->
+      <ng-container *ngIf="userRole === 'admin'">
+        <div class="groupe-menu">
+          <span class="titre-groupe">Administration</span>
+          <ul class="liste-menu">
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/dashboardadmin" routerLinkActive="actif">
+                <i class="fas fa-chart-pie"></i>
+                <span>Tableau administrateur</span>
+              </a>
+            </li>
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/utilisateurs" routerLinkActive="actif">
+                <i class="fas fa-users"></i>
+                <span>Gestion utilisateurs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+
+      <!-- Menu Super Administrateur -->
+      <ng-container *ngIf="userRole === 'superadmin'">
+        <div class="groupe-menu">
+          <span class="titre-groupe">Super Administration</span>
+          <ul class="liste-menu">
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/dashboardsuperadmin" routerLinkActive="actif">
+                <i class="fas fa-solar-panel"></i>
+                <span>Console principale</span>
+              </a>
+            </li>
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/toututilisateurs" routerLinkActive="actif">
+                <i class="fas fa-user-shield"></i>
+                <span>Tous les utilisateurs</span>
+              </a>
+            </li>
+            <li class="element-menu">
+              <a class="lien-menu" routerLink="/group-management" routerLinkActive="actif">
+                <i class="fas fa-users-cog"></i>
+                <span>Gestion des groupes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</nav>

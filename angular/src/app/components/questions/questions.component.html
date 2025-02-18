@@ -1,0 +1,40 @@
+<!-- questions.component.html -->
+<div class="main-container">
+  <div class="questions-container">
+    <div class="search-section">
+      <h2>Questions & Réponses</h2>
+      <div class="search-box">
+        <div class="input-group">
+          <input 
+            type="text" 
+            [(ngModel)]="question" 
+            placeholder="Posez votre question..." 
+            class="form-control"
+            (keyup.enter)="searchAnswers()"
+          />
+          <button class="btn btn-primary" (click)="searchAnswers()">
+            <i class="fas fa-search"></i>
+            <span>Rechercher</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <ul class="answers-list" *ngIf="answers.length > 0">
+        <li *ngFor="let answer of answers" class="answer-item">
+          <i class="fas fa-lightbulb"></i>
+          <span>{{ answer }}</span>
+        </li>
+      </ul>
+
+      <div class="empty-state" *ngIf="answers.length === 0">
+        <div class="empty-state-content">
+          <i class="fas fa-question-circle"></i>
+          <h3>Aucune question pour le moment</h3>
+          <p>Posez une question pour obtenir des réponses</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

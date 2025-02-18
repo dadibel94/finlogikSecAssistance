@@ -1,0 +1,250 @@
+.group-management {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100vh - 100px);
+}
+
+.groups-list {
+  flex: 1;
+  max-width: 400px;
+}
+
+.create-group {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.existing-groups {
+  h2 {
+    color: #333;
+  }
+
+  .group-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 350px);
+    overflow-y: auto;
+  }
+}
+
+.group-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border: 2px solid #2196F3;
+  }
+
+  .group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: #dc3545;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+
+      &:hover {
+        color: #c82333;
+      }
+    }
+  }
+
+  .description {
+    color: #666;
+    margin: 10px 0;
+  }
+
+  .members-count {
+    color: #2196F3;
+    margin: 5px 0;
+  }
+
+  .created-at {
+    color: #999;
+    font-size: 0.9em;
+    margin: 5px 0 0;
+  }
+}
+
+.group-details {
+  flex: 2;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  h2 {
+    margin-top: 0;
+    color: #333;
+  }
+}
+
+.edit-group {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-member {
+  margin-bottom: 30px;
+
+  h3 {
+    color: #333;
+  }
+
+  .form-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
+
+.members-list {
+  h3 {
+    color: #333;
+  }
+
+  .search-box {
+    margin-bottom: 15px;
+  }
+
+  .members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+}
+
+.member-card {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .member-info {
+    h4 {
+      margin: 0;
+      color: #333;
+    }
+
+    p {
+      margin: 5px 0;
+      color: #666;
+
+      &.joined-date {
+        font-size: 0.9em;
+        color: #999;
+      }
+    }
+  }
+
+  .remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+}
+
+.form-control {
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1em;
+
+  &:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.25);
+  }
+}
+
+textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+
+  &.btn-primary {
+    background-color: #2196F3;
+    color: white;
+
+    &:hover {
+      background-color: #1976D2;
+    }
+  }
+
+  &.btn-success {
+    background-color: #28a745;
+    color: white;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+}
+
+.unauthorized {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  p {
+    color: #dc3545;
+    font-size: 1.2em;
+  }
+}

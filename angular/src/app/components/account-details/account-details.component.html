@@ -1,0 +1,29 @@
+<div class="account-details">
+  <div class="account-card">
+    <div class="card-header">
+      <h2>Détails du compte</h2>
+      <button class="btn-close" (click)="goBack()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="card-body">
+      <div class="user-info">
+        <div class="info-group">
+          <label>Nom d'utilisateur</label>
+          <p>{{ user.name }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label>Email</label>
+          <p>{{ user.email }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label>Type d'utilisateur</label>
+          <p class="user-type">{{ user.type }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

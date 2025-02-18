@@ -1,0 +1,115 @@
+<div class="group-management" *ngIf="isSuperAdmin">
+  <div class="groups-list">
+    <div class="create-group">
+      <h2>Create New Group</h2>
+      <div class="form-group">
+        <input 
+          type="text" 
+          [(ngModel)]="newGroup.nomGroup" 
+          placeholder="Group Name"
+          class="form-control">
+        <textarea 
+          [(ngModel)]="newGroup.description" 
+          placeholder="Group Description"
+          class="form-control"></textarea>
+        <button (click)="createGroup()" class="btn btn-primary">
+          Create Group
+        </button>
+      </div>
+    </div>
+
+    <div class="existing-groups">
+      <h2>Existing Groups</h2>
+      <div class="group-cards">
+        <div 
+          *ngFor="let group of groups" 
+          class="group-card"
+          [class.selected]="selectedGroup?.id === group.id"
+          (click)="selectGroup(group)">
+          <div class="group-header">
+            <h3>{{ group.nomGroup }}</h3>
+            <button class="delete-btn" (click)="deleteGroup(group.id)">×</button>
+          </div>
+          <p class="description">{{ group.description }}</p>
+          <p class="utilisateurs-count">{{ group.utilisateurs.length }} utilisateurs</p>
+          <p class="created-at">Created: {{ group.createdAt | date }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-details" *ngIf="selectedGroup">
+    <h2>Group Details: {{ selectedGroup.nomGroup }}</h2>
+    
+    <div class="edit-group">
+      <input 
+        type="text" 
+        [(ngModel)]="selectedGroup.nomGroup" 
+        class="form-control">
+      <textarea 
+        [(ngModel)]="selectedGroup.description" 
+        class="form-control"></textarea>
+      <button (click)="updateGroup()" class="btn btn-primary">
+        Update Group
+      </button>
+    </div>
+
+    <div class="add-member">
+      <h3>Add New Member</h3>
+      <div class="search-box">
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          placeholder="Search users..."
+          class="form-control">
+      </div>
+
+      <div class="available-users">
+        <div 
+          *ngFor="let user of filterAvailableUsers()" 
+          class="user-card"
+          [class.selected]="newMember.id === user.id"
+          (click)="newMember = { id: user.id, username: user.username, email: user.email }">
+          <div class="user-info">
+            <h4>{{ user.username }}</h4>
+            <p>{{ user.email }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions" *ngIf="newMember.id">
+        <button (click)="addMember()" class="btn btn-success">
+          Add Selected User
+        </button>
+      </div>
+    </div>
+
+    <div class="utilisateurs-list">
+      <h3>Current utilisateurs</h3>
+      <div class="utilisateurs">
+        <div 
+          *ngFor="let member of filterMembers(selectedGroup.utilisateurs)" 
+          class="member-card">
+          <div class="member-info">
+            <h4>{{ member.username }}</h4>
+            <p>{{ member.email }}</p>
+            <p class="joined-date">Joined: {{ member.joinedAt | date }}</p>
+          </div>
+          <button 
+            class="remove-btn" 
+            (click)="removeMember(selectedGroup.id, member.id)">
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<div class="unauthorized" *ngIf="!isSuperAdmin">
+  <p>You are not authorized to access this page.</p>
+</div>

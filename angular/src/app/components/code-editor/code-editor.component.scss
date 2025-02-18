@@ -1,0 +1,123 @@
+/* Conteneur principal avec Flexbox */
+.main-container {
+  display: flex;
+  justify-content: flex-start; /* Aligner les éléments à gauche */
+}
+
+/* Conteneur de l'éditeur ajusté à droite */
+.editor-container {
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: auto;  /* Pousse l'éditeur vers la droite */
+  flex: 1;  /* Permet à l'éditeur de s'ajuster dynamiquement à la largeur restante */
+  width: 100%;  /* Fixe une largeur de 70% (ajuste selon le besoin) */
+}
+
+/* Reste de l'éditeur et bouton inchangés */
+ngx-codemirror {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.editeur-code {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  margin: 20px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.barre-outils {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.code-editor-container {
+  .editor-toolbar {
+    .selecteur-langage {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+
+      label {
+        color: var(--couleur-texte);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 200px;
+      }
+    }
+  }
+
+  .code-mirror-wrapper {
+    height: 100%;
+
+    ::ng-deep {
+      .CodeMirror {
+        height: 100%;
+        font-family: 'JetBrains Mono', monospace;
+        background-color: var(--couleur-fond);
+        color: var(--couleur-texte);
+        
+        .CodeMirror-gutters {
+          background-color: var(--couleur-fond-alt);
+          border-right: 1px solid var(--couleur-bordure);
+        }
+        
+        .CodeMirror-linenumber {
+          color: var(--couleur-texte-leger);
+        }
+        
+        .CodeMirror-cursor {
+          border-left: 2px solid var(--couleur-primaire);
+        }
+        
+        .CodeMirror-selected {
+          background-color: var(--couleur-primaire-alpha);
+        }
+        
+        // Syntax highlighting
+        .cm-keyword { color: #c678dd; }
+        .cm-operator { color: #56b6c2; }
+        .cm-variable-2 { color: #e06c75; }
+        .cm-variable { color: #d19a66; }
+        .cm-string { color: #98c379; }
+        .cm-number { color: #d19a66; }
+        .cm-comment { color: #7f848e; font-style: italic; }
+      }
+    }
+  }
+}
+
+// Restore any Bootstrap styles that might have been overridden
+:host ::ng-deep {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+  }
+}

@@ -1,0 +1,15 @@
+<app-splash-screen *ngIf="showSplash"></app-splash-screen>
+
+<div class="wrapper" *ngIf="isLoggedIn()">
+  <div class="main-content">
+    <app-navbar></app-navbar>
+    <app-sidebar></app-sidebar>
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoggedIn()">
+  <router-outlet></router-outlet>
+</div>
