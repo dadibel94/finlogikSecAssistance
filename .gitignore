@@ -1,0 +1,122 @@
+# Fichier .gitignore pour un projet Angular (frontend) et Eclipse (backend)
+
+### Frontend Angular ###
+# Fichiers de dépendances
+*/node_modules
+*/.angular/cache
+
+# Fichiers de build
+/dist
+/.output
+
+# Fichiers de cache
+/.cache
+
+# Fichiers de configuration locale
+/.env
+/.env.local
+
+# Fichiers de logs
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+
+# Fichiers de l'IDE
+/.idea
+/.vscode
+/.history
+
+# Fichiers de tests
+/coverage
+/.karma
+
+# Fichiers temporaires
+/tmp
+/.tmp
+/.temp
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+### Backend Eclipse ###
+# Fichiers de projet Eclipse
+/.classpath
+/.project
+/.settings/
+/bin/
+/target/
+
+# Fichiers de compilation
+*.class
+*.war
+*.ear
+
+# Fichiers de logs
+*.log
+
+# Fichiers de base de données H2 (si utilisé)
+*.h2.db
+
+# Fichiers de déploiement
+/build/
+/out/
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Fichiers de configuration spécifiques à l'environnement
+*.properties
+*.yml
+*.yaml
+
+# Fichiers de dépendances Maven (si utilisé)
+/.mvn/
+/mvnw
+/mvnw.cmd
+/.m2/
+
+# Fichiers de dépendances Gradle (si utilisé)
+/.gradle/
+/gradle/
+/gradlew
+/gradlew.bat
+/build/
+
+# Fichiers de dépendances Ant (si utilisé)
+/build.xml
+/ant.properties
+
+### Autres ###
+# Fichiers de documentation générés
+/docs/*
+!/docs/README.md
+
+# Fichiers de sauvegarde
+*.bak
+*.old
+
+# Fichiers de patch
+*.patch
+*.diff
+
+# Fichiers de configuration personnelle
+*.local
+*.user
+*.prefs
+
+# Fichiers de cache de l'IDE
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Fichiers de cache de l'éditeur
+.vscode/
+.idea/
