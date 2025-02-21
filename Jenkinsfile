@@ -10,10 +10,10 @@ pipeline {
         // run sonarqube test
         stage('Run Sonarqube') {
             environment {
-                scannerHome = tool 'FinlogikSecure';
+                scannerHome = tool 'Sonarscanner';
             }
             steps {
-              withSonarQubeEnv(credentialsId: 'SonarToken', installationName: 'SonarToken') {
+              withSonarQubeEnv(credentialsId: 'SonarJinkens-user', installationName: 'Sonarscanner') {
                 sh "${scannerHome}/bin/sonar-scanner"
               }
             }
